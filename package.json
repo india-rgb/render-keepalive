@@ -1,0 +1,9 @@
+{
+  "name": "render-keepalive",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Keep Render services alive using Vercel Cron",
+  "engines": {
+    "node": ">=20"
+  }
+}
