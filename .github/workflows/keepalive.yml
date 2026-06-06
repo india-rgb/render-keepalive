@@ -1,0 +1,24 @@
+name: Render Keep Alive
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Ping Render Services
+        run: |
+          URLS=(
+            "https://nexotv-xh3u.onrender.com/health"
+            "https://streambridge-1smt.onrender.com/health"
+          )
+
+          for url in "${URLS[@]}"
+          do
+            echo "Pinging $url"
+            curl -L -s -o /dev/null -w "%{http_code}\n" "$url"
+          done
